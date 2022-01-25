@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float lowJumpMultiplier;
     public bool onGround;
     
-    public LayerMask platformLayerMask;
+    public LayerMask WhitePlatformLayerMask;
 
     //public Animator anim;
     RaycastHit hit;
@@ -87,17 +87,18 @@ public class PlayerController : MonoBehaviour
     {
         //RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size * .5f, 0f, Vector2.down, 5f, platformLayerMask);
         //onGround = Physics.BoxCast(boxCollider.bounds.center, transform.localScale/2, -transform.up, out hit, transform.rotation, 10f, platformLayerMask);
-        onGround = Physics.Raycast(transform.position,-transform.up, .6f,platformLayerMask);
+        onGround = Physics.Raycast(transform.position,-transform.up, .6f,WhitePlatformLayerMask);
         //RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, Vector2.down * 5f, platformLayerMask);
         //Debug.Log(raycastHit2D.collider);
-        Debug.DrawRay(transform.position, Vector3.down*.6f,Color.red);
+        //Debug.DrawRay(transform.position, Vector3.down*.6f,Color.red);
         //onGround = raycastHit2D.collider;
         return onGround;
     }
 
     private void OnDrawGizmos()
     {
+        boxCollider = gameObject.GetComponent<BoxCollider>();
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(boxCollider.bounds.center - new Vector3(0, .25f, 0), boxCollider.bounds.size + new Vector3(0, .5f, 0));
+        Gizmos.DrawWireCube(boxCollider.bounds.center - new Vector3(0, .05f, 0), boxCollider.bounds.size + new Vector3(0, .1f, 0));
     }
 }
