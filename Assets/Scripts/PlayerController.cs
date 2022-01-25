@@ -97,7 +97,19 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded()
     {
-        onGround = Physics.Raycast(transform.position,-transform.up, .6f,WhitePlatformLayerMask);
+        Ray ray = new Ray(transform.position, -transform.up);
+        if (Physics.Raycast(ray, out hit, .6f))
+        {
+            if (hit.collider.CompareTag("White"))
+            {
+                onGround = true;
+            }
+
+        }
+
+        else
+            onGround = false;
+        //onGround = Physics.Raycast(transform.position,-transform.up, .6f,WhitePlatformLayerMask);
         return onGround;
     }
 
@@ -106,5 +118,7 @@ public class PlayerController : MonoBehaviour
         boxCollider = gameObject.GetComponent<BoxCollider>();
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(boxCollider.bounds.center - new Vector3(0, .05f, 0), boxCollider.bounds.size + new Vector3(0, .1f, 0));
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position,-transform.up*.6f);
     }
 }
