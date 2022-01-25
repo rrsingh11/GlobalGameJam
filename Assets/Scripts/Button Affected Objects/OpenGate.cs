@@ -21,15 +21,7 @@ namespace Button_Affected_Objects
 
         private void Start()
         {
-            _newPosition = _transform.position;
-        }
-
-        public override void Perform()
-        {
-            if (once) return;
-            once = true;
             var position = _transform.position;
-
             _newPosition = directions switch
             {
                 Directions.Up => new Vector3(position.x, position.y + factor, position.z),
@@ -38,7 +30,10 @@ namespace Button_Affected_Objects
                 Directions.Left => new Vector3(position.x - factor, position.y, position.z),
                 _ => throw new ArgumentOutOfRangeException()
             };
+        }
 
+        public override void Perform()
+        {
             LeanTween.move(_transform.gameObject, _newPosition, 1f);
         }
         

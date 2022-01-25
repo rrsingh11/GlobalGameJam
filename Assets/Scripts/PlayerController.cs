@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour
         }
         //anim.SetFloat("Horizontal", Mathf.Abs(moveHorizontal));
         //anim.SetFloat("Vertical", rb.velocity.y);
-        Quaternion deltaRotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
 
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -70,33 +69,20 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (IsGrounded())
+                rb.velocity = new Vector2(0f, jumpForce);;
+        }
     }
 
+    
     void FixedUpdate()
     {
-        if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxVelocity && onGround)
-        {
-            //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
+        if (Mathf.Abs(moveHorizontal) > 0.1f)
             rb.velocity = new Vector2(moveHorizontal * speed,rb.velocity.y);
-        }
-        else if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxAirVelocity)
-        {
-            //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
-            rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
-            //rb.MovePosition(transform.forward * speed);
-            //rb.velocity = new Vector2(speed * moveHorizontal, 0f);
-        }
-
-
-        if (Input.GetKey(KeyCode.Space) && onGround)
-        {
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode.Impulse);
-        }
-
-        else if (rb.velocity.x > 0 && moveHorizontal == 0 && onGround)
-            rb.velocity = new Vector2(0f,0f);
-        else if (rb.velocity.x < -0 && moveHorizontal == 0 && onGround)
-            rb.velocity = new Vector2(0f, 0f);
+        else if (moveHorizontal == 0f)
+            rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
     public bool IsGrounded()
@@ -111,8 +97,12 @@ public class PlayerController : MonoBehaviour
             {
                 onGround = true;
             }
+
             if (hit.collider.CompareTag("White Button"))
+            {
                 hit.transform.GetComponent<ButtonController>().Trigger();
+                hit.transform.GetComponent<MeshRenderer>().enabled = false;
+            }
         }
         else if (Physics.Raycast(blackRay1, out hit, .6f) || Physics.Raycast(blackRay2, out hit, .6f))
         {
@@ -120,8 +110,12 @@ public class PlayerController : MonoBehaviour
             {
                 onGround = true;
             }
+
             if (hit.collider.CompareTag("Black Button"))
+            {
                 hit.transform.GetComponent<ButtonController>().Trigger();
+                hit.transform.GetComponent<MeshRenderer>().enabled = false;
+            }
         }
         else
             onGround = false;
