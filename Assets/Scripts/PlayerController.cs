@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Buttons;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -67,18 +68,22 @@ public class PlayerController : MonoBehaviour
         {
             rotationReference.Rotate(0, 0, -90f);
         }
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
     }
 
     void FixedUpdate()
     {
-        if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxVelocity)
+        if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxVelocity && IsGrounded())
         {
-            rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
-        }else if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxVelocity)
+            //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
+            rb.velocity = new Vector2(moveHorizontal * speed,rb.velocity.y);
+        }
+        else if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxAirVelocity)
         {
-            rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
+            //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
+            rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
+            //rb.MovePosition(transform.forward * speed);
+            //rb.velocity = new Vector2(speed * moveHorizontal, 0f);
         }
 
 
@@ -105,6 +110,8 @@ public class PlayerController : MonoBehaviour
             {
                 onGround = true;
             }
+            if (hit.collider.CompareTag("White Button"))
+                hit.transform.GetComponent<ButtonObject>().Perform();
         }
         else if (Physics.Raycast(blackRay1, out hit, .6f) || Physics.Raycast(blackRay2, out hit, .6f))
         {
@@ -112,6 +119,8 @@ public class PlayerController : MonoBehaviour
             {
                 onGround = true;
             }
+            if (hit.collider.CompareTag("Black Button"))
+                hit.transform.GetComponent<ButtonObject>().Perform();
         }
         else
             onGround = false;
