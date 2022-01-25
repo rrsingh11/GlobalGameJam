@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0,10)] float jumpForce;
     [SerializeField, Range(0, 10)] float airSpeed;
     [SerializeField, Range(0, 10)] float groundSpeed;
+    [SerializeField, Range(1, 2)] int rotationMultiplier = 1;
 
-    public int rotationMultiplier = 1;
     public float fallMultiplier;
     public float lowJumpMultiplier;
     public float moveHorizontal;
     public bool onGround;
+    public bool onRoof;
     public float rotationSpeed;
     public float dashVelocity;
 
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
 
-        if (IsGrounded())
+        if (IsGrounded() || onRoof)
         {
             speed = groundSpeed;
             //anim.SetBool("onGround", true);
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += new Vector3(moveHorizontal * dashVelocity, rb.velocity.y);
         }
-
+    
         if (Input.GetKeyDown(KeyCode.C))
         {
             rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Mathf.Abs(moveHorizontal) > 0.1f && IsGrounded())
+        if (Mathf.Abs(moveHorizontal) > 0.1f && (IsGrounded() || onRoof))
         {
             rb.velocity = new Vector2(moveHorizontal * speed,rb.velocity.y);
         }
@@ -80,11 +81,23 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
         }
-
-
-        if (Input.GetKey(KeyCode.Space) && IsGrounded())
+        else if (moveHorizontal == 0f && (IsGrounded() || onRoof))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        if (onRoof)
+        {
+            rb.useGravity = false;
+        }
+        else
+            rb.useGravity = true;
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (IsGrounded())
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            else if(onRoof)
+                rb.velocity = new Vector2(rb.velocity.x, -jumpForce/2);
         }
     }
 
@@ -100,6 +113,8 @@ public class PlayerController : MonoBehaviour
             {
                 onGround = true;
             }
+            else if (hit.collider.CompareTag("WhiteRoof"))
+                onRoof = true;
         }
         else if (Physics.Raycast(blackRay1, out hit, .6f) || Physics.Raycast(blackRay2, out hit, .6f))
         {
@@ -107,9 +122,14 @@ public class PlayerController : MonoBehaviour
             {
                 onGround = true;
             }
+            else if (hit.collider.CompareTag("BlackRoof"))
+                onRoof = true;
         }
         else
+        { 
             onGround = false;
+            onRoof = false;
+        }
         return onGround;
     }
 
