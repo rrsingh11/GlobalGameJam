@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 10)] float airSpeed;
     [SerializeField, Range(0, 10)] float groundSpeed;
 
+    public int rotationMultiplier = 1;
     public float fallMultiplier;
     public float lowJumpMultiplier;
     public float moveHorizontal;
@@ -64,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            rotationReference.Rotate(0, 0, -90f);
+            rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
         }
             transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
     }
