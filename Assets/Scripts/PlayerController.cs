@@ -75,7 +75,13 @@ public class PlayerController : MonoBehaviour
         {
             rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
         }
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (IsGrounded() || onRoof)
+                rb.velocity = jumpDirection;
+        }
     }
 
     void FixedUpdate()
@@ -88,7 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
         }
-        else if (moveHorizontal == 0f && (IsGrounded() || onRoof))
+        else if (moveHorizontal == 0f)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -99,11 +105,6 @@ public class PlayerController : MonoBehaviour
         else
             rb.useGravity = true;
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (IsGrounded() || onRoof)
-                rb.velocity = jumpDirection;
-        }
     }
 
     public bool IsGrounded()
