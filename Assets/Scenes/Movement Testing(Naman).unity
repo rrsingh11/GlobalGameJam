@@ -604,11 +604,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e728b600cd77fc449164c19b98a8440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 4
-  airSpeed: 2
-  groundSpeed: 3
-  maxVelocity: 6
-  maxAirVelocity: 4
+  jumpForce: 6
+  airSpeed: 5
+  groundSpeed: 6
+  maxVelocity: 20
+  maxAirVelocity: 10
   fallMultiplier: 1.5
   lowJumpMultiplier: 1
   onGround: 0

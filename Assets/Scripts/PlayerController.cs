@@ -88,7 +88,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode.Impulse);
+            //rb.AddForce(new Vector2(0f, jumpForce), ForceMode.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
         else if (rb.velocity.x > 0 && moveHorizontal == 0 && IsGrounded())
