@@ -74,11 +74,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxVelocity && IsGrounded())
         {
-            rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
+            //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
+            rb.velocity = new Vector2(moveHorizontal * speed,rb.velocity.y);
         }
         else if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxAirVelocity)
         {
-            rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
+            //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
+            rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
             //rb.MovePosition(transform.forward * speed);
             //rb.velocity = new Vector2(speed * moveHorizontal, 0f);
         }
