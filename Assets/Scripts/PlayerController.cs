@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
     public float dashVelocity;
 
     public Transform rotationReference;
-    
+    Vector2 jumpDirection;
+
+
     public LayerMask WhitePlatformLayerMask;
 
     //public Animator anim;
@@ -39,6 +41,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
+
+        if (onGround)
+            jumpDirection = new Vector2(rb.velocity.x, jumpForce);
+        else if (onRoof)
+            jumpDirection = new Vector2(rb.velocity.x, -jumpForce / 2);
 
         if (rb.velocity.y < 0)
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -94,10 +101,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            if (IsGrounded())
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            else if(onRoof)
-                rb.velocity = new Vector2(rb.velocity.x, -jumpForce/2);
+            if (IsGrounded() || onRoof)
+                rb.velocity = jumpDirection;
         }
     }
 
@@ -114,7 +119,9 @@ public class PlayerController : MonoBehaviour
                 onGround = true;
             }
             else if (hit.collider.CompareTag("WhiteRoof"))
+            {
                 onRoof = true;
+            }
         }
         else if (Physics.Raycast(blackRay1, out hit, .6f) || Physics.Raycast(blackRay2, out hit, .6f))
         {
@@ -123,7 +130,9 @@ public class PlayerController : MonoBehaviour
                 onGround = true;
             }
             else if (hit.collider.CompareTag("BlackRoof"))
+            {
                 onRoof = true;
+            }
         }
         else
         { 
