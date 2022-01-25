@@ -585,6 +585,7 @@ GameObject:
   - component: {fileID: 1359097175}
   - component: {fileID: 1359097174}
   - component: {fileID: 1359097179}
+  - component: {fileID: 1359097180}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -607,18 +608,16 @@ MonoBehaviour:
   jumpForce: 6
   airSpeed: 5
   groundSpeed: 6
-  maxVelocity: 20
-  maxAirVelocity: 10
   fallMultiplier: 1.5
   lowJumpMultiplier: 1
+  moveHorizontal: 0
   onGround: 0
+  rotationSpeed: 0.1
+  dashVelocity: 20
+  rotationReference: {fileID: 656773052}
   WhitePlatformLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  moveHorizontal: 0
-  flipDistance: 0
-  rotationSpeed: 0.1
-  rotationReference: {fileID: 656773052}
 --- !u!65 &1359097175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -712,6 +711,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1359097180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359097173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebab323a4bc3904a9409ad82d593245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableTime: 1
+  dashVelocity: 20
 --- !u!1 &1408700073
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,42 +7,36 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0,10)] float jumpForce;
     [SerializeField, Range(0, 10)] float airSpeed;
     [SerializeField, Range(0, 10)] float groundSpeed;
-    [SerializeField, Range(0, 20)] float maxVelocity;
-    [SerializeField, Range(0, 10)] float maxAirVelocity;
 
     public float fallMultiplier;
     public float lowJumpMultiplier;
+    public float moveHorizontal;
     public bool onGround;
+    public float rotationSpeed;
+    public float dashVelocity;
+
+    public Transform rotationReference;
     
     public LayerMask WhitePlatformLayerMask;
 
     //public Animator anim;
+    
     RaycastHit hit;
 
     private float speed;
-    private float moveVertical;
-    public float moveHorizontal;
-    public float flipDistance;
-    public float rotationSpeed;
-
-    public Transform rotationReference;
 
     private Rigidbody rb;
     private BoxCollider boxCollider;
-    Vector3 m_EulerAngleVelocity;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         boxCollider = gameObject.GetComponent<BoxCollider>();
-        m_EulerAngleVelocity = new Vector3(0, 0, -90f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
-        moveVertical = Input.GetAxisRaw("Vertical");
 
         if (rb.velocity.y < 0)
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -63,6 +57,11 @@ public class PlayerController : MonoBehaviour
         //anim.SetFloat("Vertical", rb.velocity.y);
         Quaternion deltaRotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
 
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            rb.velocity += new Vector3(moveHorizontal * dashVelocity, rb.velocity.y);
+        }
+
         if (Input.GetKeyDown(KeyCode.C))
         {
             rotationReference.Rotate(0, 0, -90f);
@@ -72,30 +71,20 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxVelocity && IsGrounded())
+        if (Mathf.Abs(moveHorizontal) > 0.1f && IsGrounded())
         {
-            //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
             rb.velocity = new Vector2(moveHorizontal * speed,rb.velocity.y);
         }
-        else if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxAirVelocity)
+        else if (Mathf.Abs(moveHorizontal) > 0.1f)
         {
-            //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
             rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
-            //rb.MovePosition(transform.forward * speed);
-            //rb.velocity = new Vector2(speed * moveHorizontal, 0f);
         }
 
 
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
-            //rb.AddForce(new Vector2(0f, jumpForce), ForceMode.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-
-        else if (rb.velocity.x > 0 && moveHorizontal == 0 && IsGrounded())
-            rb.velocity = new Vector2(0f,0f);
-        else if (rb.velocity.x < -0 && moveHorizontal == 0 && IsGrounded())
-            rb.velocity = new Vector2(0f, 0f);
     }
 
     public bool IsGrounded()
@@ -120,7 +109,6 @@ public class PlayerController : MonoBehaviour
         }
         else
             onGround = false;
-        //onGround = Physics.Raycast(transform.position,-transform.up, .6f,WhitePlatformLayerMask);
         return onGround;
     }
 
