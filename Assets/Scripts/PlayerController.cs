@@ -97,16 +97,24 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded()
     {
-        Ray ray = new Ray(transform.position, -transform.up);
-        if (Physics.Raycast(ray, out hit, .6f))
+        Ray whiteRay1 = new Ray(transform.position, -transform.up);
+        Ray blackRay1 = new Ray(transform.position, transform.up);
+        Ray whiteRay2 = new Ray(transform.position, transform.right);
+        Ray blackRay2 = new Ray(transform.position, -transform.right);
+        if (Physics.Raycast(whiteRay1, out hit, .6f) || Physics.Raycast(whiteRay2, out hit, .6f))
         {
             if (hit.collider.CompareTag("White"))
             {
                 onGround = true;
             }
-
         }
-
+        else if (Physics.Raycast(blackRay1, out hit, .6f) || Physics.Raycast(blackRay2, out hit, .6f))
+        {
+            if (hit.collider.CompareTag("Black"))
+            {
+                onGround = true;
+            }
+        }
         else
             onGround = false;
         //onGround = Physics.Raycast(transform.position,-transform.up, .6f,WhitePlatformLayerMask);
@@ -119,6 +127,10 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(boxCollider.bounds.center - new Vector3(0, .05f, 0), boxCollider.bounds.size + new Vector3(0, .1f, 0));
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position,-transform.up*.6f);
+        Gizmos.DrawRay(transform.position, -transform.up * .6f);
+        Gizmos.DrawRay(transform.position, transform.right * .6f);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, transform.up * .6f);
+        Gizmos.DrawRay(transform.position, -transform.right * .6f);
     }
 }
