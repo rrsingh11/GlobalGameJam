@@ -11,6 +11,8 @@ namespace Button_Affected_Objects
 
         private Transform _transform;
         private Vector3 _newPosition;
+
+        private bool once;
         
         private void Awake()
         {
@@ -24,6 +26,8 @@ namespace Button_Affected_Objects
 
         public override void Perform()
         {
+            if (once) return;
+            once = true;
             var position = _transform.position;
 
             _newPosition = directions switch

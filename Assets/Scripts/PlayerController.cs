@@ -66,14 +66,15 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            rotationReference.Rotate(0, 0, -90f);
+            rotationReference.Rotate(0, 0, -180f);
         }
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
     }
 
     void FixedUpdate()
     {
-        if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxVelocity && IsGrounded())
+        if (Mathf.Abs(moveHorizontal) > 0.1f && Mathf.Abs(rb.velocity.x) < maxVelocity && onGround)
         {
             //rb.AddForce(new Vector2(moveHorizontal * speed, 0f), ForceMode.Impulse);
             rb.velocity = new Vector2(moveHorizontal * speed,rb.velocity.y);
@@ -87,40 +88,40 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.Space) && IsGrounded())
+        if (Input.GetKey(KeyCode.Space) && onGround)
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode.Impulse);
         }
 
-        else if (rb.velocity.x > 0 && moveHorizontal == 0 && IsGrounded())
+        else if (rb.velocity.x > 0 && moveHorizontal == 0 && onGround)
             rb.velocity = new Vector2(0f,0f);
-        else if (rb.velocity.x < -0 && moveHorizontal == 0 && IsGrounded())
+        else if (rb.velocity.x < -0 && moveHorizontal == 0 && onGround)
             rb.velocity = new Vector2(0f, 0f);
     }
 
     public bool IsGrounded()
     {
-        Ray whiteRay1 = new Ray(transform.position, -transform.up);
-        Ray blackRay1 = new Ray(transform.position, transform.up);
-        Ray whiteRay2 = new Ray(transform.position, transform.right);
-        Ray blackRay2 = new Ray(transform.position, -transform.right);
+        var whiteRay1 = new Ray(transform.position, -transform.up);
+        var blackRay1 = new Ray(transform.position, transform.up);
+        var whiteRay2 = new Ray(transform.position, transform.right);
+        var blackRay2 = new Ray(transform.position, -transform.right);
         if (Physics.Raycast(whiteRay1, out hit, .6f) || Physics.Raycast(whiteRay2, out hit, .6f))
         {
-            if (hit.collider.CompareTag("White"))
+            if (hit.collider.CompareTag("White") || hit.collider.CompareTag("White Button"))
             {
                 onGround = true;
             }
             if (hit.collider.CompareTag("White Button"))
-                hit.transform.GetComponent<ButtonObject>().Perform();
+                hit.transform.GetComponent<ButtonController>().Trigger();
         }
         else if (Physics.Raycast(blackRay1, out hit, .6f) || Physics.Raycast(blackRay2, out hit, .6f))
         {
-            if (hit.collider.CompareTag("Black"))
+            if (hit.collider.CompareTag("Black") || hit.collider.CompareTag("Black Button"))
             {
                 onGround = true;
             }
             if (hit.collider.CompareTag("Black Button"))
-                hit.transform.GetComponent<ButtonObject>().Perform();
+                hit.transform.GetComponent<ButtonController>().Trigger();
         }
         else
             onGround = false;
