@@ -8,6 +8,10 @@ TagManager:
   - Black
   - White Button
   - Black Button
+  - WhiteWall
+  - WhiteRoof
+  - BlackWall
+  - BlackRoof
   layers:
   - Default
   - TransparentFX
