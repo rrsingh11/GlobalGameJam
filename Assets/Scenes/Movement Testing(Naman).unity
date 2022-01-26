@@ -899,6 +899,7 @@ MonoBehaviour:
   lowJumpMultiplier: 1
   moveHorizontal: 0
   moveVertical: 0
+  canStick: 0
   onGround: 0
   onRoof: 0
   onWall: 0

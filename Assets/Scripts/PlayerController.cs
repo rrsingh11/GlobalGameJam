@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float lowJumpMultiplier;
     public float moveHorizontal;
     public float moveVertical;
+    public bool canStick;
     public bool onGround;
     public bool onRoof;
     public bool onWall;
@@ -141,8 +142,9 @@ public class PlayerController : MonoBehaviour
                 onRoof = true;
             }
             else if (hit.collider.CompareTag("WhiteWall"))
-            {
-                onWall = true;
+            {   if (canStick)
+                    onWall = true;
+
                 if (Mathf.Abs(moveHorizontal) > 0.1)
                     jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
                 else
@@ -166,7 +168,8 @@ public class PlayerController : MonoBehaviour
             }
             else if (hit.collider.CompareTag("BlackWall"))
             {
-                onWall = true;
+                if(canStick)
+                    onWall = true;
                 if (Mathf.Abs(moveHorizontal) > 0.1)
                     jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust*moveVertical);
                 else
