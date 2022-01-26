@@ -894,23 +894,21 @@ MonoBehaviour:
   airSpeed: 5
   groundSpeed: 6
   wallThrust: 9
+  wallFriction: 20
   rotationMultiplier: 2
   fallMultiplier: 1.5
   lowJumpMultiplier: 1
   moveHorizontal: 0
   moveVertical: 0
-  canStick: 0
+  canStick: 1
   onGround: 0
   onRoof: 0
   onWall: 0
   spacePressed: 0
   rotationSpeed: 0.1
-  dashVelocity: 20
-  rotationReference: {fileID: 656773052}
-  WhitePlatformLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
+  velocity: 0
   speed: 0
+  rotationReference: {fileID: 656773052}
 --- !u!65 &1359097175
 BoxCollider:
   m_ObjectHideFlags: 0

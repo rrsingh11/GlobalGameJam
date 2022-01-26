@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 10)] float airSpeed;
     [SerializeField, Range(0, 10)] float groundSpeed;
     [SerializeField, Range(0, 10)] float wallThrust;
+    [SerializeField, Range(0, 100)] float wallFriction;
     [SerializeField, Range(1, 2)] int rotationMultiplier = 1;
 
     public float fallMultiplier;
@@ -20,19 +21,16 @@ public class PlayerController : MonoBehaviour
     public bool onWall;
     public bool spacePressed;
     public float rotationSpeed;
-    public float dashVelocity;
+    public float velocity;
+    public float speed;
 
     public Transform rotationReference;
     Vector2 jumpDirection;
-
-
-    public LayerMask WhitePlatformLayerMask;
 
     //public Animator anim;
     
     RaycastHit hit;
 
-    public float speed;
 
     private Rigidbody rb;
     private BoxCollider boxCollider;
@@ -45,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        velocity = rb.velocity.y;
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
 
@@ -76,11 +75,6 @@ public class PlayerController : MonoBehaviour
         //anim.SetFloat("Horizontal", Mathf.Abs(moveHorizontal));
         //anim.SetFloat("Vertical", rb.velocity.y);
         Quaternion deltaRotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            rb.velocity += new Vector3(moveHorizontal * dashVelocity, rb.velocity.y);
-        }
     
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -88,14 +82,13 @@ public class PlayerController : MonoBehaviour
         }
         transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            StartCoroutine(PressTime());
             spacePressed = true;
             if (IsGrounded() || onRoof || onWall)
                 rb.velocity = jumpDirection;
         }
-        else
-            spacePressed = false;
     }
 
     void FixedUpdate()
@@ -112,10 +105,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-        else if (Mathf.Abs(moveHorizontal) > 0.1 && (onWall) && !spacePressed)
-            rb.velocity = Vector2.zero;
-        else if (Mathf.Abs(moveVertical) > 0.1 && (onRoof) && !spacePressed)
-            rb.velocity = Vector2.zero;
+        //else if (Mathf.Abs(moveHorizontal) < 0.1 && (onWall))
+        //    rb.velocity = Vector2.zero;
+        //else if (Mathf.Abs(moveVertical) > 0.1 && (onRoof) && !spacePressed)
+        //    rb.velocity = Vector2.zero;
 
         if (onRoof || onWall)
         {
@@ -124,6 +117,12 @@ public class PlayerController : MonoBehaviour
         else
             rb.useGravity = true;
 
+    }
+    
+    IEnumerator PressTime()
+    {
+        yield return new WaitForSeconds(.5f);
+        spacePressed = false;
     }
 
     public bool IsGrounded()
@@ -150,12 +149,11 @@ public class PlayerController : MonoBehaviour
 
                 if (Mathf.Abs(moveHorizontal) > 0.1)
                     jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
-                else
-                {
-                    jumpDirection = Vector2.zero;
-                    //rb.velocity = new Vector2(rb.velocity.x*moveHorizontal, 0);
-                    rb.velocity = Vector2.zero;
-                }
+                //else
+                //{
+                //    jumpDirection = Vector2.zero;
+                //    rb.velocity = Vector2.zero;
+                //}
             }
         }
         else if (Physics.Raycast(blackRay1, out hit, .51f) || Physics.Raycast(blackRay2, out hit, .51f))
@@ -169,20 +167,26 @@ public class PlayerController : MonoBehaviour
             {
                 if (canStick)
                     onRoof = true;
-                spacePressed = false;
             }
             else if (hit.collider.CompareTag("BlackWall"))
             {
-                if(canStick)
-                    onWall = true;
-                if (Mathf.Abs(moveHorizontal) > 0.1)
-                    jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust*moveVertical);
-                else
+                if (canStick)
                 {
-                    jumpDirection = Vector2.zero;
-                    //rb.velocity = new Vector2(rb.velocity.x * moveHorizontal, 0);
-                    rb.velocity = Vector2.zero;
+                    onWall = true;
+                    if (Mathf.Abs(moveHorizontal) > 0.1)
+                    {
+                        jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
+                    }
+                    if (Mathf.Abs(rb.velocity.y) > 0 && !spacePressed)
+                        rb.velocity = Vector2.zero;
                 }
+
+                //else
+                //{
+                //    jumpDirection = Vector2.zero;
+                //    //rb.velocity = new Vector2(rb.velocity.x * moveHorizontal, 0);
+                //    rb.velocity = Vector2.zero;
+                //}
             }
         }
         else
