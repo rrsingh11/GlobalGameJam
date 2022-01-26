@@ -112,7 +112,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-        else if (Mathf.Abs(moveHorizontal) > 0.1 && onWall && !spacePressed)
+        else if (Mathf.Abs(moveHorizontal) > 0.1 && (onWall) && !spacePressed)
+            rb.velocity = Vector2.zero;
+        else if (Mathf.Abs(moveVertical) > 0.1 && (onRoof) && !spacePressed)
             rb.velocity = Vector2.zero;
 
         if (onRoof || onWall)
@@ -167,6 +169,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (canStick)
                     onRoof = true;
+                spacePressed = false;
             }
             else if (hit.collider.CompareTag("BlackWall"))
             {
