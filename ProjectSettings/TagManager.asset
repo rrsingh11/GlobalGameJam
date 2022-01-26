@@ -8,6 +8,8 @@ TagManager:
   - Black
   - WhiteRoof
   - BlackRoof
+  - BlackWall
+  - WhiteWall
   layers:
   - Default
   - TransparentFX

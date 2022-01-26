@@ -7,13 +7,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0,10)] float jumpForce;
     [SerializeField, Range(0, 10)] float airSpeed;
     [SerializeField, Range(0, 10)] float groundSpeed;
+    [SerializeField, Range(0, 10)] float wallThrust;
     [SerializeField, Range(1, 2)] int rotationMultiplier = 1;
 
     public float fallMultiplier;
     public float lowJumpMultiplier;
     public float moveHorizontal;
+    public float moveVertical;
     public bool onGround;
     public bool onRoof;
+    public bool onWall;
+    public bool spacePressed;
     public float rotationSpeed;
     public float dashVelocity;
 
@@ -27,7 +31,7 @@ public class PlayerController : MonoBehaviour
     
     RaycastHit hit;
 
-    private float speed;
+    public float speed;
 
     private Rigidbody rb;
     private BoxCollider boxCollider;
@@ -41,23 +45,29 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
+        moveVertical = Input.GetAxisRaw("Vertical");
 
         if (onGround)
             jumpDirection = new Vector2(rb.velocity.x, jumpForce);
         else if (onRoof)
             jumpDirection = new Vector2(rb.velocity.x, -jumpForce / 2);
+        //else if (onWall) 
+        //{ 
+        //    jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust);
+        //    rb.velocity = new Vector3(rb.velocity.x, 0f);
+        //}
 
         if (rb.velocity.y < 0)
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
 
-        if (IsGrounded() || onRoof)
+        if (IsGrounded())
         {
             speed = groundSpeed;
             //anim.SetBool("onGround", true);
         }
-        else
+        else 
         {
             speed = airSpeed;
             //anim.SetBool("onGround", false);
@@ -79,18 +89,21 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            if (IsGrounded() || onRoof)
+            spacePressed = true;
+            if (IsGrounded() || onRoof || onWall)
                 rb.velocity = jumpDirection;
         }
+        else
+            spacePressed = false;
     }
 
     void FixedUpdate()
     {
-        if (Mathf.Abs(moveHorizontal) > 0.1f && (IsGrounded() || onRoof))
+        if (Mathf.Abs(moveHorizontal) > 0.1f && IsGrounded())
         {
-            rb.velocity = new Vector2(moveHorizontal * speed,rb.velocity.y);
+            rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
         }
-        else if (Mathf.Abs(moveHorizontal) > 0.1f)
+        else if (Mathf.Abs(moveHorizontal) > 0.1f && (!onWall && !onRoof))
         {
             rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
         }
@@ -98,7 +111,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-        if (onRoof)
+        else if (Mathf.Abs(moveHorizontal) > 0.1 && onWall && !spacePressed)
+            rb.velocity = Vector2.zero;
+
+        if (onRoof || onWall)
         {
             rb.useGravity = false;
         }
@@ -118,27 +134,54 @@ public class PlayerController : MonoBehaviour
             if (hit.collider.CompareTag("White"))
             {
                 onGround = true;
+                onWall = false;
             }
             else if (hit.collider.CompareTag("WhiteRoof"))
             {
                 onRoof = true;
             }
+            else if (hit.collider.CompareTag("WhiteWall"))
+            {
+                onWall = true;
+                if (Mathf.Abs(moveHorizontal) > 0.1)
+                    jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
+                else
+                {
+                    jumpDirection = Vector2.zero;
+                    //rb.velocity = new Vector2(rb.velocity.x*moveHorizontal, 0);
+                    rb.velocity = Vector2.zero;
+                }
+            }
         }
-        else if (Physics.Raycast(blackRay1, out hit, .6f) || Physics.Raycast(blackRay2, out hit, .6f))
+        else if (Physics.Raycast(blackRay1, out hit, .51f) || Physics.Raycast(blackRay2, out hit, .51f))
         {
             if (hit.collider.CompareTag("Black"))
             {
                 onGround = true;
+                onWall = false;
             }
             else if (hit.collider.CompareTag("BlackRoof"))
             {
                 onRoof = true;
+            }
+            else if (hit.collider.CompareTag("BlackWall"))
+            {
+                onWall = true;
+                if (Mathf.Abs(moveHorizontal) > 0.1)
+                    jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust*moveVertical);
+                else
+                {
+                    jumpDirection = Vector2.zero;
+                    //rb.velocity = new Vector2(rb.velocity.x * moveHorizontal, 0);
+                    rb.velocity = Vector2.zero;
+                }
             }
         }
         else
         { 
             onGround = false;
             onRoof = false;
+            onWall = false;
         }
         return onGround;
     }
@@ -146,12 +189,10 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         boxCollider = gameObject.GetComponent<BoxCollider>();
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(boxCollider.bounds.center - new Vector3(0, .05f, 0), boxCollider.bounds.size + new Vector3(0, .1f, 0));
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, -transform.up * .6f);
         Gizmos.DrawRay(transform.position, transform.right * .6f);
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.cyan;
         Gizmos.DrawRay(transform.position, transform.up * .6f);
         Gizmos.DrawRay(transform.position, -transform.right * .6f);
     }
