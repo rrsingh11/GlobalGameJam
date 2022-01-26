@@ -20,7 +20,7 @@ public class DashController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && playerController.moveHorizontal != 0)
         {
             rb.velocity += new Vector3(playerController.moveHorizontal * dashVelocity, rb.velocity.y);
             playerController.enabled = false;
