@@ -890,14 +890,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e728b600cd77fc449164c19b98a8440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 9
-  airSpeed: 5
-  groundSpeed: 6
+  jumpForce: 7.18
+  airSpeed: 7.09
+  groundSpeed: 7.09
   wallThrust: 9
-  wallFriction: 20
+  wallFriction: 0
   rotationMultiplier: 2
-  fallMultiplier: 1.5
-  lowJumpMultiplier: 1
+  fallMultiplier: 2.15
+  lowJumpMultiplier: 2.03
   moveHorizontal: 0
   moveVertical: 0
   canStick: 1

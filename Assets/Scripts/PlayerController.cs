@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         else if (onRoof)
         {
             jumpDirection = new Vector2(rb.velocity.x, -jumpForce / 2);
-            if (Mathf.Abs(rb.velocity.x) < 1 && Mathf.Abs(rb.velocity.x) > 0)
+            if (Mathf.Abs(rb.velocity.x) < 10 && Mathf.Abs(rb.velocity.x) > 0)
                 rb.velocity = Vector2.zero;
         }
         else if (onWall)
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
             {
                 jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
             }
-            if (!spacePressed || (moveHorizontal == 0 && spacePressed) || Mathf.Abs(rb.velocity.x) < 1)
+            if (!spacePressed || (moveHorizontal == 0 && spacePressed) || Mathf.Abs(rb.velocity.x) < 3)
                 rb.velocity = Vector2.zero;
         }
 
