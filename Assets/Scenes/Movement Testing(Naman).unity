@@ -906,7 +906,8 @@ MonoBehaviour:
   onWall: 0
   spacePressed: 0
   rotationSpeed: 0.1
-  velocity: 0
+  xVelocity: 0
+  yVelocity: 0
   speed: 0
   rotationReference: {fileID: 656773052}
 --- !u!65 &1359097175

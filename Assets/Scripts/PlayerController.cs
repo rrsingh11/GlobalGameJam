@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     public bool onWall;
     public bool spacePressed;
     public float rotationSpeed;
-    public float velocity;
+    public float xVelocity;
+    public float yVelocity;
     public float speed;
 
     public Transform rotationReference;
@@ -43,7 +44,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        velocity = rb.velocity.y;
+        yVelocity = rb.velocity.y;
+        xVelocity = rb.velocity.x;
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
 
@@ -51,11 +53,15 @@ public class PlayerController : MonoBehaviour
             jumpDirection = new Vector2(rb.velocity.x, jumpForce);
         else if (onRoof)
             jumpDirection = new Vector2(rb.velocity.x, -jumpForce / 2);
-        //else if (onWall) 
-        //{ 
-        //    jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust);
-        //    rb.velocity = new Vector3(rb.velocity.x, 0f);
-        //}
+        else if (onWall)
+        {
+            if (Mathf.Abs(moveHorizontal) > 0.1)
+            {
+                jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
+            }
+            if (!spacePressed || (moveHorizontal == 0 && spacePressed)||Mathf.Abs(rb.velocity.x) <1)
+                rb.velocity = Vector2.zero;
+        }
 
         if (rb.velocity.y < 0)
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -121,7 +127,7 @@ public class PlayerController : MonoBehaviour
     
     IEnumerator PressTime()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         spacePressed = false;
     }
 
@@ -137,23 +143,25 @@ public class PlayerController : MonoBehaviour
             {
                 onGround = true;
                 onWall = false;
+                onRoof = false;
             }
             else if (hit.collider.CompareTag("WhiteRoof"))
             {
                 if (canStick)
+                {
                     onRoof = true;
+                    onGround = false;
+                    onWall = false;
+                }
             }
             else if (hit.collider.CompareTag("WhiteWall"))
-            {   if (canStick)
+            {
+                if (canStick)
+                {
                     onWall = true;
-
-                if (Mathf.Abs(moveHorizontal) > 0.1)
-                    jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
-                //else
-                //{
-                //    jumpDirection = Vector2.zero;
-                //    rb.velocity = Vector2.zero;
-                //}
+                    onRoof = false;
+                    onGround = false;
+                }
             }
         }
         else if (Physics.Raycast(blackRay1, out hit, .51f) || Physics.Raycast(blackRay2, out hit, .51f))
@@ -162,31 +170,25 @@ public class PlayerController : MonoBehaviour
             {
                 onGround = true;
                 onWall = false;
+                onRoof = false;
             }
             else if (hit.collider.CompareTag("BlackRoof"))
             {
                 if (canStick)
+                { 
                     onRoof = true;
+                    onGround = false;
+                    onWall = false;
+                }
             }
             else if (hit.collider.CompareTag("BlackWall"))
             {
                 if (canStick)
                 {
                     onWall = true;
-                    if (Mathf.Abs(moveHorizontal) > 0.1)
-                    {
-                        jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
-                    }
-                    if (Mathf.Abs(rb.velocity.y) > 0 && !spacePressed)
-                        rb.velocity = Vector2.zero;
+                    onRoof = false;
+                    onGround = false;
                 }
-
-                //else
-                //{
-                //    jumpDirection = Vector2.zero;
-                //    //rb.velocity = new Vector2(rb.velocity.x * moveHorizontal, 0);
-                //    rb.velocity = Vector2.zero;
-                //}
             }
         }
         else
