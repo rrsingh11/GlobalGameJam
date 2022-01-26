@@ -139,7 +139,8 @@ public class PlayerController : MonoBehaviour
             }
             else if (hit.collider.CompareTag("WhiteRoof"))
             {
-                onRoof = true;
+                if (canStick)
+                    onRoof = true;
             }
             else if (hit.collider.CompareTag("WhiteWall"))
             {   if (canStick)
@@ -164,7 +165,8 @@ public class PlayerController : MonoBehaviour
             }
             else if (hit.collider.CompareTag("BlackRoof"))
             {
-                onRoof = true;
+                if (canStick)
+                    onRoof = true;
             }
             else if (hit.collider.CompareTag("BlackWall"))
             {
