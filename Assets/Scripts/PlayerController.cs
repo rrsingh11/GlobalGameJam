@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 10)] float airSpeed;
     [SerializeField, Range(0, 10)] float groundSpeed;
     [SerializeField, Range(0, 10)] float wallThrust;
-    [SerializeField, Range(0, 100)] float wallFriction;
+    [SerializeField, Range(0, 100)] float glitchStartTime;
     [SerializeField, Range(1, 2)] int rotationMultiplier = 1;
 
     public float fallMultiplier;
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool onGround;
     public bool onRoof;
     public bool onWall;
+    public bool glitch;
     public bool spacePressed;
     public float rotationSpeed;
     public float xVelocity;
@@ -40,6 +41,10 @@ public class PlayerController : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         boxCollider = gameObject.GetComponent<BoxCollider>();
+        if (glitch)
+        {
+            InvokeRepeating("Flip", glitchStartTime, Random.Range(5,10));
+        }
     }
 
     void Update()
@@ -88,7 +93,8 @@ public class PlayerController : MonoBehaviour
     
         if (Input.GetKeyDown(KeyCode.C))
         {
-            rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
+            Flip();
+            //rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
         }
         transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
 
@@ -135,6 +141,10 @@ public class PlayerController : MonoBehaviour
         spacePressed = false;
     }
 
+    public void Flip()
+    {
+        rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
+    }
     public bool IsGrounded()
     {
         Ray whiteRay1 = new Ray(transform.position, -transform.up);
