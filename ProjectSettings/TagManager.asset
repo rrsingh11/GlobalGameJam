@@ -12,6 +12,8 @@ TagManager:
   - WhiteRoof
   - BlackWall
   - BlackRoof
+  - Trigger
+  - Trigger 2
   layers:
   - Default
   - TransparentFX

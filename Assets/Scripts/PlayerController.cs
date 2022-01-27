@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 10)] float groundSpeed;
     [SerializeField, Range(0, 10)] float wallThrust;
     [SerializeField, Range(0, 100)] float wallFriction;
-    [SerializeField, Range(1, 2)] int rotationMultiplier = 1;
+    [SerializeField, Range(0, 2)] int rotationMultiplier = 1;
 
     public float fallMultiplier;
     public float lowJumpMultiplier;
