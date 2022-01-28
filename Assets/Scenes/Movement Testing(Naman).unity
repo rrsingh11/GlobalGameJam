@@ -904,7 +904,7 @@ MonoBehaviour:
   onGround: 0
   onRoof: 0
   onWall: 0
-  glitch: 1
+  glitch: 0
   spacePressed: 0
   rotationSpeed: 0.1
   xVelocity: 0
