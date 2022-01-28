@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - White
+  - Black
+  - White Button
+  - Black Button
+  - WhiteWall
+  - WhiteRoof
+  - BlackWall
+  - BlackRoof
+  - Trigger
+  - Trigger 2
+  - Moving
+  - Next Level
   layers:
   - Default
   - TransparentFX
@@ -11,8 +23,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - PostProcess
+  - Background
   - 
   - 
   - 
