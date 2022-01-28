@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float xVelocity;
     public float yVelocity;
     public float speed;
+    private bool addThrust;
 
     public Transform rotationReference;
     Vector2 jumpDirection;
@@ -52,6 +53,13 @@ public class PlayerController : MonoBehaviour
         yVelocity = rb.velocity.y;
         xVelocity = rb.velocity.x;
         moveHorizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Mathf.Abs(moveHorizontal) > 0.1)
+            addThrust = true;
+        else
+            addThrust = false;
+        
+        if (addThrust)
         moveVertical = Input.GetAxisRaw("Vertical");
 
         if (onGround)
@@ -64,11 +72,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (onWall)
         {
-            if (Mathf.Abs(moveHorizontal) > 0.1)
-            {
+            //if (Mathf.Abs(moveHorizontal) > 0.1)
+            //{
                 jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
-            }
-            if (!spacePressed || (moveHorizontal == 0 && spacePressed) || Mathf.Abs(rb.velocity.x) < 3)
+            //}
+            if (!spacePressed ||  Mathf.Abs(rb.velocity.x) < 3)
                 rb.velocity = Vector2.zero;
         }
 
@@ -159,8 +167,6 @@ public class PlayerController : MonoBehaviour
                 onWall = false;
                 onRoof = false;
             }
-            else if (hit.collider.CompareTag("White Button"))
-                onGround = true;
             else if (hit.collider.CompareTag("WhiteRoof"))
             {
                 if (canStick)
@@ -188,8 +194,6 @@ public class PlayerController : MonoBehaviour
                 onWall = false;
                 onRoof = false;
             }
-            else if (hit.collider.CompareTag("Black Button"))
-                onGround = true;
             else if (hit.collider.CompareTag("BlackRoof"))
             {
                 if (canStick)
