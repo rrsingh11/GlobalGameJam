@@ -8,7 +8,9 @@ namespace Button_Affected_Objects
     {
         [SerializeField] private Directions directions;
         [SerializeField] private float factor;
-
+        [SerializeField] private bool smooth = false;
+        
+        
         private Transform _transform;
         private Vector3 _newPosition;
 
@@ -34,7 +36,10 @@ namespace Button_Affected_Objects
 
         public override void Perform()
         {
-            LeanTween.move(_transform.gameObject, _newPosition, 1f);
+            if (!smooth)
+                LeanTween.move(_transform.gameObject, _newPosition, 1f);
+            else
+                LeanTween.move(_transform.gameObject, _newPosition, 1f).setEaseInOutQuad();
         }
         
         private enum Directions

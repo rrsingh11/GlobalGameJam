@@ -7,13 +7,18 @@ public class GlitchController : MonoBehaviour
 {
     [SerializeField] private Transform rotationReference;
     [SerializeField] private Vector3 pushStrength;
-    
+    [SerializeField] private float speed;
+    [SerializeField] private PlayerMeshGenerator playerMeshGenerator;
+    [SerializeField] private float factor;
     
     private Rigidbody rb;
     private bool grounded;
 
+    private Vector3 startPosition;
+
     private void Start()
     {
+        startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -29,12 +34,18 @@ public class GlitchController : MonoBehaviour
 
     private void Update()
     {
-        transform.rotation = Quaternion.Lerp(transform.GetChild(0).rotation, rotationReference.rotation, 10f * Time.deltaTime);
-        if (Input.GetKeyDown(KeyCode.C) && grounded)
+        var vel = rb.velocity;
+        if (!Input.GetKey(KeyCode.D) || !grounded)
         {
-            rotationReference.Rotate(0f, 0f, 180f);
-            
-            rb.AddForce(pushStrength);
+            vel.x = 0f;
+            return;
         }
+        vel.x = speed * 2f;
+        rb.velocity = vel;
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1.5f);
     }
 }

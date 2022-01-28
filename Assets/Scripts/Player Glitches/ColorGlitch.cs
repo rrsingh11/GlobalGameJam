@@ -55,6 +55,15 @@ namespace Player_Glitches
             mesh.GetComponent<CapsuleCollider>().material = physicMaterial;
             cinemachineVirtualCamera.Follow = mesh.transform;
             StartCoroutine(Delay());
+            StartCoroutine(Delay2());
+        }
+
+        private IEnumerator Delay2()
+        {
+            yield return new WaitForSeconds(4f);
+            cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_XDamping = 0f;
+            cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = 0f;
+            cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_ZDamping = 0f;
         }
 
         private IEnumerator Delay()

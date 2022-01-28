@@ -14,6 +14,8 @@ TagManager:
   - BlackRoof
   - Trigger
   - Trigger 2
+  - Moving
+  - Next Level
   layers:
   - Default
   - TransparentFX
