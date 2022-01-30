@@ -342,9 +342,9 @@ MonoBehaviour:
     pitch: 0
     source: {fileID: 0}
   - name: Dash
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+    clip: {fileID: 8300000, guid: 862671e7d1fa06244a0e1a0521b4f911, type: 3}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
 --- !u!4 &336156602
 Transform:
