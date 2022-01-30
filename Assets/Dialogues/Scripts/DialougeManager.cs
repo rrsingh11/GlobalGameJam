@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using  UnityEngine.UI;
 
 public class DialougeManager : MonoBehaviour
 {
+    [SerializeField] private Animator image;
+
     public Text nameText;
     public Text dialogueText;
     public Text flipNameText;
@@ -84,6 +87,17 @@ public class DialougeManager : MonoBehaviour
             animator.SetBool("IsOpen",false);
             Debug.Log($"End of Conversation");
             enabled = false;
+            if (SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 5)
+            {
+                image.Play("FadeOut", -1, 0f);
+                StartCoroutine(ChangeScene());
+            }
+        }
+
+        private IEnumerator ChangeScene()
+        {
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

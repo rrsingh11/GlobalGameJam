@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
                     onGround = false;
                 }
             }
-            else if (hit.collider.CompareTag("Black") || hit.collider.CompareTag("BlackRoof") || hit.collider.CompareTag("BlackWall") || hit.collider.CompareTag("Black Button"))
+            else if (hit.collider.CompareTag("Black") || hit.collider.CompareTag("BlackRoof") || hit.collider.CompareTag("BlackWall"))
                 Respawn();
         }
         else if (Physics.Raycast(blackRay1, out hit, .51f) || Physics.Raycast(blackRay2, out hit, .51f))
@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour
                     onGround = false;
                 }
             }
-            else if (hit.collider.CompareTag("White") || hit.collider.CompareTag("WhiteRoof") || hit.collider.CompareTag("WhiteWall") || hit.collider.CompareTag("White Button"))
+            else if (hit.collider.CompareTag("White") || hit.collider.CompareTag("WhiteRoof") || hit.collider.CompareTag("WhiteWall"))
                 Respawn();
         }
         else
