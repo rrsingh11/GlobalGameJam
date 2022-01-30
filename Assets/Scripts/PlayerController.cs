@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Animator dAnimator;
     [SerializeField, Range(0,10)] float jumpForce;
     [SerializeField, Range(0, 10)] float airSpeed;
     [SerializeField, Range(0, 10)] float groundSpeed;
@@ -50,6 +51,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (dAnimator.GetBool("IsOpen"))
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
         yVelocity = rb.velocity.y;
         xVelocity = rb.velocity.x;
         moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -117,6 +124,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (dAnimator.GetBool("IsOpen"))
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+        
         if (Mathf.Abs(moveHorizontal) > 0.1f && IsGrounded())
         {
             rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
