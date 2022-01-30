@@ -315,6 +315,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57628148}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &61176942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 253969433039194110, guid: 9d343a2b3e8041f47bbec2dd4cf1bb29, type: 3}
+  m_PrefabInstance: {fileID: 1594345330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &87775546 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 253969433759839163, guid: 9d343a2b3e8041f47bbec2dd4cf1bb29, type: 3}
@@ -375,6 +386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 1257812281}
     - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
       propertyPath: dialouge.name
       value: 
@@ -1852,6 +1867,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822324223}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &847757110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 253969433998272934, guid: 9d343a2b3e8041f47bbec2dd4cf1bb29, type: 3}
+  m_PrefabInstance: {fileID: 1594345330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &864649279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,6 +2372,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9128180635488541744, guid: 629c1feca48671944943fb259b2f1320, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 938341669}
+    - target: {fileID: 9128180635488541744, guid: 629c1feca48671944943fb259b2f1320, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 87775546}
+    - target: {fileID: 9128180635488541744, guid: 629c1feca48671944943fb259b2f1320, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 847757110}
+    - target: {fileID: 9128180635488541744, guid: 629c1feca48671944943fb259b2f1320, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1560357015}
+    - target: {fileID: 9128180635488541744, guid: 629c1feca48671944943fb259b2f1320, type: 3}
+      propertyPath: flipNameText
+      value: 
+      objectReference: {fileID: 61176942}
     - target: {fileID: 9128180635488541745, guid: 629c1feca48671944943fb259b2f1320, type: 3}
       propertyPath: m_Name
       value: DialougeManager (1)
@@ -2711,6 +2757,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250808086}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1257812281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9128180635488541744, guid: 629c1feca48671944943fb259b2f1320, type: 3}
+  m_PrefabInstance: {fileID: 1074208416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2866511b6d90f5546b3a808aa98e3202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1272125095
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,6 +3272,10 @@ PrefabInstance:
       value: Square (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 1257812281}
+    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
       propertyPath: dialouge.name
       value: 
       objectReference: {fileID: 0}
@@ -3319,6 +3380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 1257812281}
     - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
       propertyPath: dialouge.name
       value: 
@@ -3579,6 +3644,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546715166}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1560357015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 253969434342886265, guid: 9d343a2b3e8041f47bbec2dd4cf1bb29, type: 3}
+  m_PrefabInstance: {fileID: 1594345330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1594345330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3586,6 +3662,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 253969434089736193, guid: 9d343a2b3e8041f47bbec2dd4cf1bb29, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1257812281}
+    - target: {fileID: 253969434089736193, guid: 9d343a2b3e8041f47bbec2dd4cf1bb29, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
+      objectReference: {fileID: 0}
     - target: {fileID: 253969434232434435, guid: 9d343a2b3e8041f47bbec2dd4cf1bb29, type: 3}
       propertyPath: m_Pivot.x
       value: 0
