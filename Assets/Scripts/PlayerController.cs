@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -158,6 +159,10 @@ public class PlayerController : MonoBehaviour
         spacePressed = false;
     }
 
+    public void Respawn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void Flip()
     {
         rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
@@ -199,6 +204,8 @@ public class PlayerController : MonoBehaviour
                     onGround = false;
                 }
             }
+            else if (hit.collider.CompareTag("Black") || hit.collider.CompareTag("BlackRoof") || hit.collider.CompareTag("BlackWall") || hit.collider.CompareTag("Black Button"))
+                Respawn();
         }
         else if (Physics.Raycast(blackRay1, out hit, .51f) || Physics.Raycast(blackRay2, out hit, .51f))
         {
@@ -226,6 +233,8 @@ public class PlayerController : MonoBehaviour
                     onGround = false;
                 }
             }
+            else if (hit.collider.CompareTag("White") || hit.collider.CompareTag("WhiteRoof") || hit.collider.CompareTag("WhiteWall") || hit.collider.CompareTag("White Button"))
+                Respawn();
         }
         else
         { 
