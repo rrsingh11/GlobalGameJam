@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float xVelocity;
     public float yVelocity;
     public float speed;
+    private bool normalAudio;
     private bool addThrust;
 
     public Transform rotationReference;
@@ -63,7 +64,10 @@ public class PlayerController : MonoBehaviour
         moveVertical = Input.GetAxisRaw("Vertical");
 
         if (onGround)
+        {
             jumpDirection = new Vector2(rb.velocity.x, jumpForce);
+            //FindObjectOfType<AudioManager>().Play("GroundImpact");
+        }
         else if (onRoof)
         {
             jumpDirection = new Vector2(rb.velocity.x, -jumpForce / 2);
@@ -74,9 +78,9 @@ public class PlayerController : MonoBehaviour
         {
             //if (Mathf.Abs(moveHorizontal) > 0.1)
             //{
-                jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
+            jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
             //}
-            if (!spacePressed ||  Mathf.Abs(rb.velocity.x) < 3)
+            if (!spacePressed || Mathf.Abs(rb.velocity.x) < 3)
                 rb.velocity = Vector2.zero;
         }
 
@@ -101,17 +105,22 @@ public class PlayerController : MonoBehaviour
     
         if (Input.GetKeyDown(KeyCode.C))
         {
+            normalAudio = true;
             Flip();
-            //rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
+         
         }
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(PressTime());
             spacePressed = true;
             if (IsGrounded() || onRoof || onWall)
+            {
                 rb.velocity = jumpDirection;
+                if (Mathf.Abs(rb.velocity.magnitude) > 1) 
+                    FindObjectOfType<AudioManager>().Play("Jump");
+            }
         }
     }
 
@@ -152,6 +161,11 @@ public class PlayerController : MonoBehaviour
     public void Flip()
     {
         rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
+        if (!normalAudio)
+            FindObjectOfType<AudioManager>().Play("Glitch");
+        else
+            FindObjectOfType<AudioManager>().Play("Flip");
+        normalAudio = false;
     }
     public bool IsGrounded()
     {
@@ -161,7 +175,7 @@ public class PlayerController : MonoBehaviour
         Ray blackRay2 = new Ray(transform.position, -transform.right);
         if (Physics.Raycast(whiteRay1, out hit, .6f) || Physics.Raycast(whiteRay2, out hit, .6f))
         {
-            if (hit.collider.CompareTag("White"))
+            if (hit.collider.CompareTag("White") || hit.collider.CompareTag("White Button"))
             {
                 onGround = true;
                 onWall = false;
@@ -188,7 +202,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Physics.Raycast(blackRay1, out hit, .51f) || Physics.Raycast(blackRay2, out hit, .51f))
         {
-            if (hit.collider.CompareTag("Black"))
+            if (hit.collider.CompareTag("Black") || hit.collider.CompareTag("Black Button"))
             {
                 onGround = true;
                 onWall = false;
