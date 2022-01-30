@@ -34,7 +34,7 @@ public class GlitchController : MonoBehaviour
     private void Update()
     {
         var vel = rb.velocity;
-        if (!Input.GetKey(KeyCode.LeftArrow) || !grounded)
+        if (!Input.GetKey(KeyCode.D) || !grounded)
         {
             vel.x = 0f;
             return;

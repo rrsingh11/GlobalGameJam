@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 10)] float wallThrust;
     [SerializeField, Range(0, 100)] float glitchStartTime;
     [SerializeField, Range(1, 2)] int rotationMultiplier = 1;
-
+    [SerializeField] private Animator dAnimator;
+    
+    
     public float fallMultiplier;
     public float lowJumpMultiplier;
     public float moveHorizontal;
@@ -52,6 +54,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        if (dAnimator.GetBool("IsOpen"))
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+        
         yVelocity = rb.velocity.y;
         xVelocity = rb.velocity.x;
         moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -126,6 +137,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (dAnimator.GetBool("IsOpen"))
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+        
         if (Mathf.Abs(moveHorizontal) > 0.1f && IsGrounded())
         {
             rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
