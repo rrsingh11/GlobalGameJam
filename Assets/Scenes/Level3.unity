@@ -1221,6 +1221,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5360230470307529844, guid: 492dd53a4b8ad4347b276f732a782ca6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360230470842264682, guid: 492dd53a4b8ad4347b276f732a782ca6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360230471469303857, guid: 492dd53a4b8ad4347b276f732a782ca6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5534677554213595924, guid: 492dd53a4b8ad4347b276f732a782ca6, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 564119675}
+    - target: {fileID: 5534677554213595924, guid: 492dd53a4b8ad4347b276f732a782ca6, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 564119672}
+    - target: {fileID: 5534677554213595924, guid: 492dd53a4b8ad4347b276f732a782ca6, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 564119673}
+    - target: {fileID: 5534677554213595924, guid: 492dd53a4b8ad4347b276f732a782ca6, type: 3}
+      propertyPath: flipNameText
+      value: 
+      objectReference: {fileID: 564119674}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492dd53a4b8ad4347b276f732a782ca6, type: 3}
 --- !u!1 &494536533

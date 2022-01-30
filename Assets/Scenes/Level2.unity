@@ -2252,6 +2252,22 @@ PrefabInstance:
       propertyPath: flipNameText
       value: 
       objectReference: {fileID: 253969433161232969}
+    - target: {fileID: 6182867815242786078, guid: 5d9ee3227eac3d240ae743a2d898af8e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182867815385020478, guid: 5d9ee3227eac3d240ae743a2d898af8e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182867815737890256, guid: 5d9ee3227eac3d240ae743a2d898af8e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182867816725938659, guid: 5d9ee3227eac3d240ae743a2d898af8e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9ee3227eac3d240ae743a2d898af8e, type: 3}
 --- !u!1 &629178448

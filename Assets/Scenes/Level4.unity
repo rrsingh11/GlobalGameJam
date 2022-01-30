@@ -4222,6 +4222,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 2.56
       objectReference: {fileID: 0}
+    - target: {fileID: 6466128190530534029, guid: 4212b9f04c71d624f884ba2c37599f55, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6849992125043716724, guid: 4212b9f04c71d624f884ba2c37599f55, type: 3}
       propertyPath: animator
       value: 
