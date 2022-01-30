@@ -795,396 +795,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207684784}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &230453045
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707408, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707412, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: m_Name
-      value: Square
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: Manager
-      value: 
-      objectReference: {fileID: 9128180636532137187}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.size
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[0]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[1]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[2]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[3]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[4]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[5]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[6]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[7]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[8]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[9]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[10]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[11]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[12]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[13]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[14]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[15]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[16]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[17]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[18]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[19]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[20]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[21]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[22]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[23]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[24]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[25]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[26]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[27]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[28]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[29]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[30]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[31]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[32]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[33]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[34]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[35]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[36]
-      value: Aspo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[37]
-      value: Marvo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[38]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.names.Array.data[39]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.size
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[0]
-      value: 'Why must you make this so difficult '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[1]
-      value: "I don\u2019t WANT to make anything difficult for ANYONE"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[2]
-      value: I just want my body BACK
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[3]
-      value: 'You NEED to STOP this charade '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[4]
-      value: 'Leave my Body alone it was never yours to begin with '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[5]
-      value: "It has always been mine, I can\u2019t just up and leave..."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[6]
-      value: "\u2026 I WON\u2019T just Leave"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[7]
-      value: "Please \u2026"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[8]
-      value: ...GIVE..
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[9]
-      value: ..MY LIFE BACK
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[10]
-      value: "It\u2019s My life you are talking about and I am not relinquishing
-        it because you just asked nicely  "
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[11]
-      value: "What\u2019s HAPPENING?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[12]
-      value: THIS IS ALL YOUR FAULT
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[13]
-      value: 'I have lost all control '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[14]
-      value: Well, if this makes you feel any better
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[15]
-      value: Then I too have lost what little control I had.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[16]
-      value: 'WHY DID YOU HAVE TO DO THIS ? '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[17]
-      value: That was my world as well
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[18]
-      value: 'You cannot just come to me claim everything '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[19]
-      value: "It\u2019s not me, it\u2019s you"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[20]
-      value: "You\u2019re the one taking away everything away from me."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[21]
-      value: My life, my autonomy, my body ...
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[22]
-      value: ....My vision
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[23]
-      value: "I can\u2019t see ANYTHING "
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[24]
-      value: 'Neither can I '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[25]
-      value: STOP SCREECHING FOR A SECOND YOU DEMON
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[26]
-      value: "ALRIGHT \u2026. Alright, fine, I can\u2019t seem to move "
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[27]
-      value: Could you be so kind to get us out of here
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[28]
-      value: 'We could sort this out some other place '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[29]
-      value: I thought you could move now once we stopped.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[30]
-      value: 'We need to get out of here '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[31]
-      value: With that, I agree
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[32]
-      value: "Let\u2019s get home before anything happens again"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[33]
-      value: "Let\u2019s get home before anything happens again"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[34]
-      value: 'I was blacking out on my way home '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[35]
-      value: "Wait, so it wasn\u2019t just me"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[36]
-      value: 'I think I understand what was going on now '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[37]
-      value: 'Oh yeah, then save it for later, we need to move. '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[38]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8647348010379707413, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
-      propertyPath: dialouge.sentences.Array.data[39]
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2c49ebf68a0065e48908ff5282effd2c, type: 3}
 --- !u!1 &264583945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +999,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 253969434134273329}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &348700156
 MonoBehaviour:
@@ -4477,7 +4087,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 253969433797951892}
-  - {fileID: 9128180636532137184}
   - {fileID: 8647348011663309797}
   - {fileID: 348700130}
   m_Father: {fileID: 0}
@@ -4835,6 +4444,79 @@ MonoBehaviour:
   speed: 1
   playerMeshGenerator: {fileID: 1470917521}
   factor: 1.2
+--- !u!1001 &6851780139917751774
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2430719290061056317, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 253969433797951881}
+    - target: {fileID: 2430719290061056317, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 253969434096196500}
+    - target: {fileID: 2430719290061056317, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 253969434304772427}
+    - target: {fileID: 2430719290061056317, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: flipNameText
+      value: 
+      objectReference: {fileID: 253969433142343116}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.558295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.31811082
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.980293
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920838, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851780140621920841, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+      propertyPath: m_Name
+      value: Dialogs
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8b55636456d21e745802794977fc55e4, type: 3}
 --- !u!114 &7960421135839706704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5107,52 +4789,16 @@ Transform:
   m_LocalScale: {x: 3.3066256, y: 3.1864543, z: 30.1697}
   m_Children: []
   m_Father: {fileID: 253969434134273329}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &9128180636532137184
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9128180636532137186}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -415.7362, y: -123.369934, z: 10.060623}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 253969434134273329}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &9128180636532137186
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9128180636532137184}
-  - component: {fileID: 9128180636532137187}
-  m_Layer: 0
-  m_Name: DialougeManager (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &9128180636532137187
+--- !u!114 &9128180636532137187 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2430719290061056317, guid: 8b55636456d21e745802794977fc55e4, type: 3}
+  m_PrefabInstance: {fileID: 6851780139917751774}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9128180636532137186}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2866511b6d90f5546b3a808aa98e3202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 253969434096196500}
-  dialogueText: {fileID: 253969434304772427}
-  flipNameText: {fileID: 253969433142343116}
-  animator: {fileID: 253969433797951881}
