@@ -1,2 +1,2 @@
 # GlobalGameJam
-Contributor -RituRaj
+
