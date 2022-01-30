@@ -20,5 +20,10 @@ namespace Button_Affected_Objects
         {
             _switchLocation = !_switchLocation;
         }
+
+        public override void ResetPosition()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

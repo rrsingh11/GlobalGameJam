@@ -16,6 +16,7 @@ TagManager:
   - Trigger 2
   - Moving
   - Next Level
+  - Reset
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ namespace Button_Affected_Objects
         private Transform _transform;
         private Vector3 _newPosition;
 
-        private bool once;
+        private bool gatesOpen;
         
         private void Awake()
         {
@@ -34,8 +34,18 @@ namespace Button_Affected_Objects
             };
         }
 
+        public override void ResetPosition()
+        {
+            if (gatesOpen)
+            {
+                LeanTween.move(_transform.gameObject, _newPosition + new Vector3(factor, 0f, 0f), 1f);
+                gatesOpen = false;
+            }
+        }
+
         public override void Perform()
         {
+            gatesOpen = true;
             if (!smooth)
                 LeanTween.move(_transform.gameObject, _newPosition, 1f);
             else

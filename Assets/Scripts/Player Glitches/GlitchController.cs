@@ -9,7 +9,6 @@ public class GlitchController : MonoBehaviour
     [SerializeField] private Vector3 pushStrength;
     [SerializeField] private float speed;
     [SerializeField] private PlayerMeshGenerator playerMeshGenerator;
-    [SerializeField] private float factor;
     
     private Rigidbody rb;
     private bool grounded;
@@ -35,17 +34,12 @@ public class GlitchController : MonoBehaviour
     private void Update()
     {
         var vel = rb.velocity;
-        if (!Input.GetKey(KeyCode.D) || !grounded)
+        if (!Input.GetKey(KeyCode.LeftArrow) || !grounded)
         {
             vel.x = 0f;
             return;
         }
         vel.x = speed * 2f;
         rb.velocity = vel;
-    }
-
-    private IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(1.5f);
     }
 }

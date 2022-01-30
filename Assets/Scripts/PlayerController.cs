@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
             Flip();
             //rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
         }
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

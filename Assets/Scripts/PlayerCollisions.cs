@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Button_Affected_Objects;
 using Buttons;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,14 +19,17 @@ public class PlayerCollisions : MonoBehaviour
             collision.transform.GetComponent<ButtonController>().Trigger();
     }
 
-    private static void Trigger(Component other)
+    private static void Trigger(Component other, int action = 0)
     {
         var components = other.GetComponents(typeof(ButtonController));
 
         foreach (var component in components)
         {
             var buttonController = (ButtonController) component;
-            buttonController.Trigger();
+            if (action == 0)
+                buttonController.Trigger();
+            else
+                buttonController.ResetPosition();
         }
     }
     
@@ -38,6 +42,12 @@ public class PlayerCollisions : MonoBehaviour
             image.Play("FadeOut", -1, 0f);
             StartCoroutine(Delay());
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Reset"))
+            Trigger(other, 1);
     }
 
     private IEnumerator Delay()
