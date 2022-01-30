@@ -20,9 +20,10 @@ public class DashController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) && playerController.moveHorizontal != 0 && canDash)
+        if (Input.GetKeyDown(KeyCode.X) && playerController.moveHorizontal != 0 && canDash && !playerController.onRoof)
         {
             rb.velocity += new Vector3(playerController.moveHorizontal * dashVelocity, 0f);
+            FindObjectOfType<AudioManager>().Play("Dash");
             playerController.enabled = false;
             StartCoroutine(EnableScript());
         }

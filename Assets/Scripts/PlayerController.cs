@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float xVelocity;
     public float yVelocity;
     public float speed;
+    private bool normalAudio;
     private bool addThrust;
 
     public Transform rotationReference;
@@ -60,10 +62,13 @@ public class PlayerController : MonoBehaviour
             addThrust = false;
         
         if (addThrust)
-        moveVertical = Input.GetAxisRaw("Vertical");
+            moveVertical = Input.GetAxisRaw("Vertical");
 
         if (onGround)
+        {
             jumpDirection = new Vector2(rb.velocity.x, jumpForce);
+            //FindObjectOfType<AudioManager>().Play("GroundImpact");
+        }
         else if (onRoof)
         {
             jumpDirection = new Vector2(rb.velocity.x, -jumpForce / 2);
@@ -74,9 +79,9 @@ public class PlayerController : MonoBehaviour
         {
             //if (Mathf.Abs(moveHorizontal) > 0.1)
             //{
-                jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
+            jumpDirection = new Vector2(jumpForce * moveHorizontal, wallThrust * moveVertical);
             //}
-            if (!spacePressed ||  Mathf.Abs(rb.velocity.x) < 3)
+            if (!spacePressed || Mathf.Abs(rb.velocity.x) < 3)
                 rb.velocity = Vector2.zero;
         }
 
@@ -97,12 +102,12 @@ public class PlayerController : MonoBehaviour
         }
         //anim.SetFloat("Horizontal", Mathf.Abs(moveHorizontal));
         //anim.SetFloat("Vertical", rb.velocity.y);
-        Quaternion deltaRotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed);
     
         if (Input.GetKeyDown(KeyCode.C))
         {
+            normalAudio = true;
             Flip();
-            //rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
+         
         }
         transform.rotation = Quaternion.Lerp(transform.rotation, rotationReference.rotation, rotationSpeed * Time.deltaTime);
 
@@ -111,7 +116,11 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(PressTime());
             spacePressed = true;
             if (IsGrounded() || onRoof || onWall)
+            {
                 rb.velocity = jumpDirection;
+                if (Mathf.Abs(rb.velocity.magnitude) > 1) 
+                    FindObjectOfType<AudioManager>().Play("Jump");
+            }
         }
     }
 
@@ -149,9 +158,18 @@ public class PlayerController : MonoBehaviour
         spacePressed = false;
     }
 
+    public void Respawn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void Flip()
     {
         rotationReference.Rotate(0, 0, -90f * rotationMultiplier);
+        if (!normalAudio)
+            FindObjectOfType<AudioManager>().Play("Glitch");
+        else
+            FindObjectOfType<AudioManager>().Play("Flip");
+        normalAudio = false;
     }
     public bool IsGrounded()
     {
@@ -161,7 +179,7 @@ public class PlayerController : MonoBehaviour
         Ray blackRay2 = new Ray(transform.position, -transform.right);
         if (Physics.Raycast(whiteRay1, out hit, .6f) || Physics.Raycast(whiteRay2, out hit, .6f))
         {
-            if (hit.collider.CompareTag("White"))
+            if (hit.collider.CompareTag("White") || hit.collider.CompareTag("White Button"))
             {
                 onGround = true;
                 onWall = false;
@@ -185,10 +203,12 @@ public class PlayerController : MonoBehaviour
                     onGround = false;
                 }
             }
+            else if (hit.collider.CompareTag("Black") || hit.collider.CompareTag("BlackRoof") || hit.collider.CompareTag("BlackWall") || hit.collider.CompareTag("Black Button"))
+                Respawn();
         }
         else if (Physics.Raycast(blackRay1, out hit, .51f) || Physics.Raycast(blackRay2, out hit, .51f))
         {
-            if (hit.collider.CompareTag("Black"))
+            if (hit.collider.CompareTag("Black") || hit.collider.CompareTag("Black Button"))
             {
                 onGround = true;
                 onWall = false;
@@ -212,6 +232,8 @@ public class PlayerController : MonoBehaviour
                     onGround = false;
                 }
             }
+            else if (hit.collider.CompareTag("White") || hit.collider.CompareTag("WhiteRoof") || hit.collider.CompareTag("WhiteWall") || hit.collider.CompareTag("White Button"))
+                Respawn();
         }
         else
         { 
