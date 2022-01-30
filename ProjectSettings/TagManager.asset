@@ -17,6 +17,7 @@ TagManager:
   - Moving
   - Next Level
   - Reset
+  - Death
   layers:
   - Default
   - TransparentFX

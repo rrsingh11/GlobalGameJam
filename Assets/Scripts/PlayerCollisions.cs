@@ -42,6 +42,8 @@ public class PlayerCollisions : MonoBehaviour
             image.Play("FadeOut", -1, 0f);
             StartCoroutine(Delay());
         }
+        else if (other.CompareTag("Death"))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnTriggerStay(Collider other)
